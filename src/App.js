@@ -1,24 +1,68 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import Form from './components/form'
 import './App.css';
 
-function App() {
+const App = props => {
+
+  const [data, setdata] = useState({})
+
+  const getResponsedata = res => {
+          setdata(res)
+  }
+
+  console.log(data) 
+  
+
+  const ejem = [
+    {
+      "type": "input",
+      "data": [
+        {
+          "name": "usuarios",
+          "type": "text"
+        },
+        { 
+          "name": "correo",
+          "type": "email"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "data": [
+        {
+          "name": "mesas",
+          "value": [
+            {
+              "name": "holamundo1"
+            },
+            {
+              "name": "hoamundo2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "input",
+      "data": [
+        {
+          "name": "direccion",
+          "type": "text"
+        }
+
+      ]
+    }
+
+  ]
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     
+      <Form  callback={getResponsedata.bind(this)} data={ejem} title="registrar" ></Form>
+   
     </div>
   );
 }
