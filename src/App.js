@@ -26,34 +26,36 @@ const App = props => {
           "type": "email"
         }
       ]
-    },
-    {
-      "type": "select",
-      "data": [
-        {
-          "name": "mesas",
-          "value": [
-            {
-              "name": "holamundo1"
-            },
-            {
-              "name": "hoamundo2"
-            }
-          ]
-        }
-      ]
-    },
+    }
+  ]
+
+
+  const ejem2 = [
     {
       "type": "input",
       "data": [
         {
-          "name": "direccion",
+          "name": "prueba1",
           "type": "text"
+        },
+        { 
+          "name": "clave",
+          "type": "password"
+        },
+        { 
+          "name": "clave",
+          "type": "password"
+        },
+        { 
+          "name": "clave",
+          "type": "password"
         }
-
+        , { 
+          "name": "clave",
+          "type": "password"
+        }
       ]
     }
-
   ]
 
 
@@ -62,7 +64,10 @@ const App = props => {
     <div className="App">
      
       <Form  callback={getResponsedata.bind(this)} data={ejem} title="registrar" ></Form>
-   
+
+      <Form  callback={getResponsedata.bind(this)} data={ejem2} title="registrar" ></Form>
+
+    
     </div>
   );
 }
