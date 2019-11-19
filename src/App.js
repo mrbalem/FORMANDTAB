@@ -1,17 +1,44 @@
-import React, {useState} from 'react';
-import Form from './components/form'
+import React, { useState } from 'react';
+import Form from './components/form';
+import { CSSTransition } from 'react-transition-group';
 import './App.css';
+import { Button } from 'react-bootstrap';
 
 const App = props => {
 
   const [data, setdata] = useState({})
+  const [showButton, setShowButton] = useState(true);
+  const [showMessage, setShowMessage] = useState(false);
+  const [statussend, setstatussend] = useState(false);
 
   const getResponsedata = res => {
-          setdata(res)
+    setdata(res)
   }
 
-  console.log(data) 
+  const getvisible = res => {
+    setstatussend(res)
+
+    // codigo para enviar la dara a cualquier base de datos
+    //    ....
+    //
+    
+    if(showMessage === true){
+      setShowMessage(!showMessage)
+      }
+    setstatussend(false)
+  }
+
   
+  // const mostrarformulario = () => {
+  //   setformsatus(!formstatus)
+  // }
+
+  const message = () => {
+    setShowMessage(true)
+  }
+
+  console.log(data)
+
 
   const ejem = [
     {
@@ -19,55 +46,71 @@ const App = props => {
       "data": [
         {
           "name": "usuarios",
-          "type": "text"
+          "type": "text",
+          "icon": "fas fa-user"
         },
-        { 
+        {
           "name": "correo",
-          "type": "email"
+          "type": "email",
+          "icon": "fas fa-envelope-open-text"
+        },
+        {
+          "name": "clave",
+          "type": "password",
+          "icon": "fas fa-unlock-alt"
         }
       ]
-    }
-  ]
-
-
-  const ejem2 = [
+    },
     {
-      "type": "input",
+      "type": "select",
       "data": [
         {
-          "name": "prueba1",
-          "type": "text"
-        },
-        { 
-          "name": "clave",
-          "type": "password"
-        },
-        { 
-          "name": "clave",
-          "type": "password"
-        },
-        { 
-          "name": "clave",
-          "type": "password"
-        }
-        , { 
-          "name": "clave",
-          "type": "password"
+          "name": "sexo",
+          "icon": "fas fa-male",
+          "value": [
+            {
+              "name": "Mujer"
+            },
+            {
+              "name": "Hombre"
+            }
+          ]
         }
       ]
     }
   ]
-
 
 
   return (
-    <div className="App">
-     
-      <Form  callback={getResponsedata.bind(this)} data={ejem} title="registrar" ></Form>
+    <div>
+      {
+        statussend &&
+        <div>  cargando.... </div>
+      }
 
-      <Form  callback={getResponsedata.bind(this)} data={ejem2} title="registrar" ></Form>
 
-    
+     {showButton && (
+
+       <Button
+       onClick={message}
+       >
+          Show Message
+       </Button>
+
+     )}
+
+      <CSSTransition
+      in={showMessage}
+      timeout={300}
+      classNames="alert"
+      unmountOnExit
+      onEnter={() => setShowButton(false)}
+      onExited={() => setShowButton(true)}
+      >
+
+      <Form visible={getvisible.bind()} callback={getResponsedata.bind()} data={ejem} title="Registrar usuario" ></Form>          
+      </CSSTransition>
+
     </div>
   );
 }
