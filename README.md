@@ -51,6 +51,22 @@ import { Button } from 'react-bootstrap';
     }
 
 ```
+### cambiar el estilo del contendor de los input
+
+```jsx
+
+ const ContainerInput = {
+        borderRadius: "15px", 
+        backgroundColor: "#fff", 
+        overflow: "hidden", 
+        opacity: "1", 
+        visibility: "visible", 
+        WebkitTransition: "all .3s ease" 
+    }
+
+
+```
+
 
 #### cambiar el estilo del input
 
@@ -92,5 +108,67 @@ import { Button } from 'react-bootstrap';
         visibility: "visible", 
         WebkitTransition: "all .3s ease" 
     }
+
+```
+### Estructura para instanciar los inputs
+
+```jsx
+  
+  const ejem = [
+    {
+      "type": "input",
+      "data": [
+        {
+          "name": "usuarios",
+          "type": "text",
+          "icon": "fas fa-user"
+        },
+        {
+          "name": "clave",
+          "type": "password",
+          "icon": "fas fa-unlock-alt"
+        }
+      ]
+    },
+    {
+        "type": "select",
+        "data": [
+            {
+              "name": "example",
+              "icon": "fas fa-unlock-alt",
+              "value": [
+                {
+                  "name": "1"
+                },
+                { "name": "2"}
+              ]
+            }
+          ]
+    }
+  ]
+
+```
+
+### props necesarios del componente
+
+```jsx
+   // style => enviamos los estilos necesarios para poder cambiar el estilo del formulario
+   /**
+        ejemplo:
+        const style = {
+              "body": body, //body es el objeto que se ha mencionado anteriorment
+              "title": title,
+              "ContainerInput": ContainerInput,
+              "input": input
+        }
+        
+   **/
+   
+   // login => lo que indicamos es que nos muestre una imagen aleatoria de un usuario para dar una mejor presentacion, si no    // lo desas simplemete lo quitas.
+   
+   // buttonName => es para cambiar el nombre del boton
+   //
+
+<Form style={style} login={true} buttonName={"Ingresar"} visible={getvisible.bind()} callback={getResponsedata.bind()} data={ejem} title="Login" ></Form>
 
 ```
