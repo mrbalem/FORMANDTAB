@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import './App.css';
 import { Button } from 'react-bootstrap';
 
+
 const App = props => {
 
   const [data, setdata] = useState({})
@@ -15,20 +16,43 @@ const App = props => {
     setdata(res)
   }
 
+  //AddButton()
+
   const getvisible = res => {
     setstatussend(res)
 
     // codigo para enviar la dara a cualquier base de datos
     //    ....
     //
-    
+ 
     if(showMessage === true){
       setShowMessage(!showMessage)
       }
     setstatussend(false)
   }
 
-  
+   const title = {
+    // background: "linear-gradient(-50deg, red, blue)",
+     fontSize: "25px",
+     //paddingTop: "80px",
+     color: "#ffffff", 
+     textAlign: "center", 
+     //padding: "0.5em",
+      
+   }
+   const body = {
+     padding: "1em",
+     //background: "#EEF1F7" 
+   }
+
+   
+   const style = {
+         "title": title,
+         "body": body, 
+         //"position": position
+   }
+
+   
   // const mostrarformulario = () => {
   //   setformsatus(!formstatus)
   // }
@@ -38,7 +62,6 @@ const App = props => {
   }
 
   console.log(data)
-
 
   const ejem = [
     {
@@ -50,11 +73,6 @@ const App = props => {
           "icon": "fas fa-user"
         },
         {
-          "name": "correo",
-          "type": "email",
-          "icon": "fas fa-envelope-open-text"
-        },
-        {
           "name": "clave",
           "type": "password",
           "icon": "fas fa-unlock-alt"
@@ -62,21 +80,19 @@ const App = props => {
       ]
     },
     {
-      "type": "select",
-      "data": [
-        {
-          "name": "sexo",
-          "icon": "fas fa-male",
-          "value": [
+        "type": "select",
+        "data": [
             {
-              "name": "Mujer"
-            },
-            {
-              "name": "Hombre"
+              "name": "rony",
+              "icon": "dkasld",
+              "value": [
+                {
+                  "name": "hola"
+                },
+                { "name": "gaa"}
+              ]
             }
           ]
-        }
-      ]
     }
   ]
 
@@ -108,7 +124,8 @@ const App = props => {
       onExited={() => setShowButton(true)}
       >
 
-      <Form visible={getvisible.bind()} callback={getResponsedata.bind()} data={ejem} title="Registrar usuario" ></Form>          
+      <Form style={style} login={true} buttonName={"Ingresar"} visible={getvisible.bind()} callback={getResponsedata.bind()} data={ejem} title="Login" ></Form>
+
       </CSSTransition>
 
     </div>
