@@ -1,19 +1,12 @@
-# Declarar una tabla simple
+# Debemos importar los compenentes necesarios para su uso.
 
 
-```php
-$table = Tablefy::getInstance('tabla_prueba');
-$table->setHeader(array('name_columna1','name_columna2'));
-$table->setData(function()  {
-	  $data  = obtener_datos()
-      return $data
-  },function($n) {
-       return array(
-        'name_columna1'           =>$n['campo_1'],
-        'name_columna2'          => $n['campo_2'],
-       );
-  });
+```jsx
 
-$table->prepare();
+import React, { useState } from 'react';
+import Form from './components/form';
+import { CSSTransition } from 'react-transition-group';
+import './App.css';
+import { Button } from 'react-bootstrap';
 
 
